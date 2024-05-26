@@ -1,3 +1,4 @@
 /llama2/
 /.mindnlp/
 /__pycache__/
+*/__pycache__/
