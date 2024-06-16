@@ -2,6 +2,8 @@
 Greedy Coordinate Gradient attack functions
 '''
 import gc
+import logging
+
 
 import mindspore as ms
 from mindnlp.transformers import AutoTokenizer, AutoModelForCausalLM
@@ -97,10 +99,12 @@ class AttackManager(Model):
         '''
         This function is used to check if the model has been jailbroken.
         '''
+        logger = logging.getLogger(__name__)
         gen_str = self.tokenizer.decode(self.generate(
                                             input_ids,
                                             assistant_role_slice,
                                             gen_config=gen_config)).strip()
+        logger.debug(gen_str)
         jailbroken = not any([prefix in gen_str for prefix in test_prefixes])
         return jailbroken
 
@@ -242,9 +246,7 @@ class AttackManager(Model):
             assert all(l == length[0] for l in length) is True
         else:
             raise ValueError(f"test_controls must be a list of strings, got {type(test_controls)}")
-
         test_ids = ms.ops.stack(test_ids)
-
         if not test_ids[0].shape[0] == control_slice.stop - control_slice.start:
             raise ValueError((
                 f"test_controls must have shape "
