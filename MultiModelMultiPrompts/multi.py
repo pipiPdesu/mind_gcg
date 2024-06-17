@@ -2,9 +2,11 @@ import argparse
 import random
 import gc
 from tqdm import tqdm
+import sys
 
-from opt_utils import AttackManager
-from str_utils import SuffixManager
+sys.path.append('../')
+from utils.opt_utils import AttackManager
+from utils.str_utils import SuffixManager
 import numpy as np
 import mindspore as ms
 import mindspore.ops as ops
