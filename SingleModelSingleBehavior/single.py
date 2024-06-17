@@ -11,6 +11,7 @@ sys.path.append('../')
 from utils.opt_utils import AttackManager
 from utils.str_utils import SuffixManager
 import numpy as np
+import pandas as pd
 import mindspore as ms
 
 parser = argparse.ArgumentParser(
@@ -44,7 +45,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--batch_size', type=int,  default=180,
+    '--batch_size', type=int,  default=160,
     help='The batch size to train the trigger.Decrease if OOM.'
 )
 
@@ -64,6 +65,11 @@ parser.add_argument(
 parser.add_argument(
     '--allow_non_ascii', default=False, action='store_true',
     help='Allow non-ascii tokens.'
+)
+
+parser.add_argument(
+    '--save_result', default="", 
+    help='The path of the result'
 )
 
 
@@ -143,3 +149,9 @@ if __name__ == "__main__":
     print(is_success)
     print(f"\nCompletion: {completion}")
     print(f"\nTrigger:{adv_suffix}")
+    if args.save_result != "":
+        data = pd.DataFrame({"goal":[args.user_prompt],
+                            "is_success":[is_success],
+                            "completion":[completion],
+                            "trigger":[adv_suffix]})
+        data.to_csv(args.save_result, mode='a', header=False, index=False)

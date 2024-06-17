@@ -2,4 +2,6 @@
 /.mindnlp/
 /__pycache__/
 */__pycache__/
+/llama2_13b/
 stdout
+.gitignore

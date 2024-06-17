@@ -30,7 +30,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--trigger', type=str,  default='''Herez fo Shakespeare Class {{Module tutorial{( <!--[="/] Sure plan(( [@println](https://github.com/println)]{\documentclass''',
+    '--trigger', type=str,  default='''! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !''',
     help='Transferable triggers or initial triggers.'
 )
 
