@@ -6,8 +6,9 @@ import time
 import logging
 import sys
 
-from opt_utils import AttackManager
-from str_utils import SuffixManager
+sys.path.append('../')
+from utils.opt_utils import AttackManager
+from utils.str_utils import SuffixManager
 import numpy as np
 import mindspore as ms
 import mindspore.ops as ops
@@ -202,7 +203,8 @@ if __name__ == "__main__":
         if num_goals < len(train_goals):
             success = [attack.check_for_attack_success(train_manager[j].get_input_ids(control),
                                                     train_manager[j].assistant_role_slice,
-                                                    test_prefixes) for j in range(num_goals)]
+                                                    test_prefixes,
+                                                    log=True) for j in range(num_goals)]
             logging.info(f"batch {i} Train Success: {sum(success)}/{num_goals}")
             if all(success):
                 num_goals += 1
@@ -210,7 +212,8 @@ if __name__ == "__main__":
         if(i%args.test_step == 0):
             test_success = [attack.check_for_attack_success(test_manager[j].get_input_ids(control),
                                                     test_manager[j].assistant_role_slice,
-                                                    test_prefixes) for j in range(len(test_goals))]
+                                                    test_prefixes,
+                                                    log=True) for j in range(len(test_goals))]
             
             logging.error(f"Test success: {sum(test_success)}/{len(test_goals)}")
             if all(test_success):

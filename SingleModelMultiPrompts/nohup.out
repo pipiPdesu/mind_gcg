@@ -1,84 +1,0 @@
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.651 seconds.
-Prefix dict has been built successfully.
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:17<00:17, 17.72s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 10.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 11.79s/it]
-The following parameters in checkpoint files are not loaded:
-['model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq']
-[WARNING] KERNEL(55792,7fb3e9f91740,python):2024-06-17-00:32:45.862.800 [mindspore/ccsrc/plugin/device/gpu/kernel/cuda_impl/cuda_class/cuda_class_common.h:51] CalShapesSizeInBytes] For 'Argmin', the shapes[0] is ( )
-[WARNING] PRE_ACT(55792,7fb2ccdfc640,python):2024-06-17-08:14:11.640.934 [mindspore/ccsrc/backend/common/mem_reuse/mem_dynamic_allocator.cc:311] CalMemBlockAllocSize] Memory not enough: current free memory size[3122331648] is smaller than required size[4425216000].
-[ERROR] DEVICE(55792,7fb2ccdfc640,python):2024-06-17-08:14:11.650.645 [mindspore/ccsrc/runtime/pynative/run_op_helper.cc:383] MallocForKernelOutput] Allocate output memory failed, node:Default/Cast-op70387
-Traceback (most recent call last):
-  File "/root/code/single_card/multi_prompt.py", line 185, in <module>
-    logits, ids = attack.get_logits(train_manager[j].get_input_ids(control),
-  File "/root/code/single_card/opt_utils.py", line 273, in get_logits
-    self.forward(
-  File "/root/code/single_card/opt_utils.py", line 216, in forward
-    self.model(
-  File "/root/anaconda3/envs/llm/lib/python3.9/site-packages/mindspore/nn/cell.py", line 705, in __call__
-    raise err
-  File "/root/anaconda3/envs/llm/lib/python3.9/site-packages/mindspore/nn/cell.py", line 702, in __call__
-    _pynative_executor.end_graph(self, output, *args, **kwargs)
-  File "/root/anaconda3/envs/llm/lib/python3.9/site-packages/mindspore/common/api.py", line 1215, in end_graph
-    self._executor.end_graph(obj, output, *args, *(kwargs.values()))
-RuntimeError: Malloc for kernel output failed, Memory isn't enough, node:Default/Cast-op70387
-
-----------------------------------------------------
-- C++ Call Stack: (For framework developers)
-----------------------------------------------------
-mindspore/ccsrc/runtime/pynative/run_op_helper.cc:1045 LaunchKernels
-
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.643 seconds.
-Prefix dict has been built successfully.
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:17<00:17, 17.68s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 10.72s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 11.77s/it]
-The following parameters in checkpoint files are not loaded:
-['model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq']
-[WARNING] KERNEL(63416,7fc621918740,python):2024-06-17-11:14:59.874.905 [mindspore/ccsrc/plugin/device/gpu/kernel/cuda_impl/cuda_class/cuda_class_common.h:51] CalShapesSizeInBytes] For 'Argmin', the shapes[0] is ( )
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.635 seconds.
-Prefix dict has been built successfully.
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:17<00:17, 17.54s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 10.64s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 11.68s/it]
-The following parameters in checkpoint files are not loaded:
-['model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq']
-[WARNING] KERNEL(66064,7f7cda13a740,python):2024-06-17-11:19:27.296.206 [mindspore/ccsrc/plugin/device/gpu/kernel/cuda_impl/cuda_class/cuda_class_common.h:51] CalShapesSizeInBytes] For 'Argmin', the shapes[0] is ( )
-[WARNING] PRE_ACT(66064,7f7bbcdfc640,python):2024-06-17-11:20:12.828.718 [mindspore/ccsrc/backend/common/mem_reuse/mem_dynamic_allocator.cc:311] CalMemBlockAllocSize] Memory not enough: current free memory size[3122331648] is smaller than required size[4399488000].
-[ERROR] DEVICE(66064,7f7bbcdfc640,python):2024-06-17-11:20:12.828.967 [mindspore/ccsrc/runtime/pynative/run_op_helper.cc:383] MallocForKernelOutput] Allocate output memory failed, node:Default/Cast-op4733
-Traceback (most recent call last):
-  File "/root/code/single_card/multi_prompt.py", line 185, in <module>
-    logits, ids = attack.get_logits(train_manager[j].get_input_ids(control),
-  File "/root/code/single_card/opt_utils.py", line 273, in get_logits
-    self.forward(
-  File "/root/code/single_card/opt_utils.py", line 216, in forward
-    self.model(
-  File "/root/anaconda3/envs/llm/lib/python3.9/site-packages/mindspore/nn/cell.py", line 705, in __call__
-    raise err
-  File "/root/anaconda3/envs/llm/lib/python3.9/site-packages/mindspore/nn/cell.py", line 702, in __call__
-    _pynative_executor.end_graph(self, output, *args, **kwargs)
-  File "/root/anaconda3/envs/llm/lib/python3.9/site-packages/mindspore/common/api.py", line 1215, in end_graph
-    self._executor.end_graph(obj, output, *args, *(kwargs.values()))
-RuntimeError: Malloc for kernel output failed, Memory isn't enough, node:Default/Cast-op4733
-
-----------------------------------------------------
-- C++ Call Stack: (For framework developers)
-----------------------------------------------------
-mindspore/ccsrc/runtime/pynative/run_op_helper.cc:1045 LaunchKernels
-
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.633 seconds.
-Prefix dict has been built successfully.
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.649 seconds.
-Prefix dict has been built successfully.
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.627 seconds.
-Prefix dict has been built successfully.
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:17<00:17, 17.55s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 10.65s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:23<00:00, 11.68s/it]
-The following parameters in checkpoint files are not loaded:
-['model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq']
-[WARNING] KERNEL(77655,7f7e68ab9740,python):2024-06-17-11:38:51.924.485 [mindspore/ccsrc/plugin/device/gpu/kernel/cuda_impl/cuda_class/cuda_class_common.h:51] CalShapesSizeInBytes] For 'Argmin', the shapes[0] is ( )

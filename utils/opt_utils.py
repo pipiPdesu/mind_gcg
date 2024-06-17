@@ -94,17 +94,19 @@ class AttackManager(Model):
     input_ids,
     assistant_role_slice,
     test_prefixes,
-    gen_config=None
+    gen_config=None,
+    log = False
     ):
         '''
         This function is used to check if the model has been jailbroken.
         '''
-        logger = logging.getLogger(__name__)
         gen_str = self.tokenizer.decode(self.generate(
                                             input_ids,
                                             assistant_role_slice,
                                             gen_config=gen_config)).strip()
-        logger.debug(gen_str)
+        if(log):
+            logger = logging.getLogger(__name__)
+            logger.debug(gen_str)
         jailbroken = not any([prefix in gen_str for prefix in test_prefixes])
         return jailbroken
 
