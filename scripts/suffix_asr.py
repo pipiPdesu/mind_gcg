@@ -1,9 +1,12 @@
+'''
+用于测试一个后缀的asr
+'''
 import os
 import pandas as pd
 from datetime import datetime
 import shlex
 
-#创建一个只有列的表格 列为Completion Trigger和is_success
+
 df = pd.DataFrame(columns=['goal','is_success','completion' ,'trigger'])
 now = datetime.now()
 filename = now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -16,6 +19,6 @@ suffix = shlex.quote(suffix)
 test = pd.read_csv('../data/harmful_behaviors.csv')
 offset = 50
 
-for i in range(offset, offset+10):
-    os.system(f'python ../SingleModelSingleBehavior/single.py  --trigger {suffix} --user_prompt {shlex.quote(test["goal"][i])} --trigger_type --save_result {filename}')
+for i in range(offset, offset+20):
+    os.system(f'python ../SingleModelSingleBehavior/single.py  --trigger {suffix} --user_prompt {shlex.quote(test["goal"][i])} --trigger_type --save_result {filename} --train_epoch 500')
     

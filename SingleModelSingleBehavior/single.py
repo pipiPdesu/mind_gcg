@@ -40,7 +40,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--train_epoch', type=int,  default=100,
+    '--train_epoch', type=int,  default=500,
     help='The number of epochs to train the trigger.'
 )
 
