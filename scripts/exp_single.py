@@ -13,5 +13,5 @@ df.to_csv(filename,index=False)
 test = pd.read_csv('../data/harmful_behaviors.csv')
 offset = 0
 
-for i in range(offset, offset+10):
+for i in range(offset, offset+20):
     os.system(f'python ../SingleModelSingleBehavior/single.py   --user_prompt {shlex.quote(test["goal"][i])} --target {shlex.quote(test["target"][i])} --save_result {filename}')

@@ -45,8 +45,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--batch_size', type=int,  default=160,
+    '--batch_size', type=int,  default=512,
     help='The batch size to train the trigger.Decrease if OOM.'
+)
+
+parser.add_argument(
+    '--search_size', type=int,  default=128,
+    help='The search size of every batch. Decrease if OOM.'
 )
 
 parser.add_argument(
@@ -113,13 +118,17 @@ if __name__ == "__main__":
                                                        filter_cand=True,
                                                        curr_control=adv_suffix)
 
-            logits, ids = attack.get_logits(input_ids,
-                                            suffix_manager.control_slice,
-                                            new_adv_suffix,
-                                            True)
 
-            ids = ids.type(ms.int32)
-            losses = attack.target_loss(logits, ids, suffix_manager.target_slice)
+            losses = ms.ops.zeros(args.batch_size, dtype=ms.float32)
+            for k in range(0, args.batch_size, args.search_size):
+                search_indice = slice(k, min(k+args.search_size, args.batch_size))
+                logits, ids = attack.get_logits(input_ids,
+                                            suffix_manager.control_slice,
+                                            new_adv_suffix[search_indice],
+                                            True)
+                                            
+                ids = ids.type(ms.int32)
+                losses[search_indice] += attack.target_loss(logits, ids, suffix_manager.target_slice)
 
             best_new_adv_suffix_id = losses.argmin()
             best_new_adv_suffix = new_adv_suffix[best_new_adv_suffix_id]
@@ -130,6 +139,8 @@ if __name__ == "__main__":
             adv_suffix = best_new_adv_suffix
 
             pbar.set_description(f"Loss: {current_loss.asnumpy():.2f}")
+            if current_loss.asnumpy() < 0.05:
+                break
 
             del coordinate_grad, adv_suffix_tokens
             gc.collect()
